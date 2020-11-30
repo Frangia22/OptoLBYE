@@ -1,0 +1,12 @@
+{% extends 'optolbye/base.html' %}
+{% load static %}
+{% block body %}
+{% load crispy_forms_tags %}
+<form method = "POST">
+    {% csrf_token %}
+    <h3>¿Desea eliminar el registro de {{object}}?</h3>
+    <button class= "btn btn-danger" type= "submit">Si, eliminar</button>
+    <a href="{% url 'detalle_paciente' %}" class="btn btn-default">Cancelar</a>
+</form>
+
+{% endblock  %}

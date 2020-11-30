@@ -1,0 +1,6 @@
+{% extends "optolbye/base.html" %}
+{% block body %}
+<h1>Bienvenido, {{ request.usuario.nombre }}</h1>
+    
+<a href="{% url 'logout' %}">Salir</a>
+{% endblock %}

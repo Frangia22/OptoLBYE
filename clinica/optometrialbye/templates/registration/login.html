@@ -1,0 +1,33 @@
+{% extends "optolbye/base.html" %}
+{% load static %}
+{% block body %}
+{% load crispy_forms_tags %}
+<main class="py-3 ">
+<div class="container p-2">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card bg-light">
+                <div class="card-body m-auto">
+                    <h3>Iniciar sesion</h3>
+                    <hr>
+                    <form action="" method="post" class="m-2">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <input type="submit" value="Ingresar" class="btn btn-primary mt-2 ">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+
+
+{% endblock  %}
+{% block footer %}
+<footer class="py-3 bg-primary fixed-bottom">
+    <div class="container">
+      <p class="m-0 text-light text-center">Derechos reservados 2020 (C)</p>
+    </div>
+</footer>
+{% endblock %}

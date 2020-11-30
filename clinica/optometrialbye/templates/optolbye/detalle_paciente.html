@@ -1,0 +1,30 @@
+{% extends 'optolbye/base.html' %}
+{% load static %}
+{% block body %}
+
+    {% for paciente in pacientes %}
+
+<div class="jumbotron jumbotron-fluid text-center py-2">
+    <div class="container">
+        <h1 class="display-4">{{paciente.id}}{{ paciente.nombre }} {{ paciente.apellido }}</h1>
+        
+        <h2 class="display-5">Contacto</h2>
+        <p class="lead">
+            <a class="nav-item nav-link" href="Cel: {{ paciente.celular }}">{{ paciente.celular }}</a>
+        </p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="https://wa.me/{{ paciente.celular }}" >Enviar WhatsApp</a>
+        </p>
+
+        <h2 class="display-5">Historial</h2>
+        <p class="lead">{{ paciente.historial }}</p>
+        {% if perms.optometrialbye.change_pacientes %}
+        <a href="{% url 'editar_paciente' paciente.id %}" class="btn btn-success btn-md px-4 mx-2">Editar</a>                     
+        <a href="{% url 'eliminar_paciente' paciente.id %}" class="btn btn-danger px-4 mx-2">Eliminar</a>
+        {% endif %}   
+    </div>
+</div>
+
+    {% endfor %}
+
+{% endblock  %}

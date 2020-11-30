@@ -3,23 +3,23 @@ genero_opciones = (
     ('M', 'Masculino')
 )
 descripcion_opciones = (
-    ('1', 'Cerca/Izquierda'),
-    ('2', 'Cerca/Derecha'),
-    ('3', 'Lejos/Izquierda'),
-    ('4', 'Lejos/Derecha')
+    ('Cerca', 'Cerca'),
+    ('Lejos', 'Lejos'),
+    ('Izquierda', 'Izquierda'),
+    ('Derecha', 'Derecha')
 )
 otra_descripcion = (
-    ('1', 'Con armazon'),
-    ('2', 'Sin armazon')
+    ('Con armazon', 'Con armazon'),
+    ('Sin armazon', 'Sin armazon')
 )
 opciones_de_pago = (
-    ('1', 'Tarjeta'),
-    ('2', 'Debito'),
-    ('3', 'Efectivo'),
-    ('4', 'Billetera Virtual')
+    ('Tarjeta', 'Tarjeta'),
+    ('Debito', 'Debito'),
+    ('Efectivo', 'Efectivo'),
+    ('Billetera Virtual', 'Billetera Virtual')
 )
 estado = (
-    ('1', 'Pediente'),
-    ('2', 'En taller'),
-    ('3', 'Entregado')
+    ('Pendiente', 'Pediente'),
+    ('En taller', 'En taller'),
+    ('Entregado', 'Entregado')
 )
