@@ -4,9 +4,9 @@
 {% load crispy_forms_tags %}
 <form method = "POST">
     {% csrf_token %}
-    <h3>¿Desea eliminar el registro de {{object}}?</h3>
+    <h3>¿Desea eliminar el pedido de {{object.turno}}?</h3>
     <button class= "btn btn-danger" type= "submit">Si, eliminar</button>
-    <a href="{% url 'detalle_paciente' %}" class="btn btn-default">Cancelar</a>
+    <a href="{% url 'detalle_turno' %}" class="btn btn-default">Cancelar</a>
 </form>
 
 {% endblock  %}
