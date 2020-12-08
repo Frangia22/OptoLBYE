@@ -1,0 +1,38 @@
+{% extends 'optolbye/base.html' %}
+{% load static %}
+{% block body %}
+<main class="py-4">
+    <div class="container-fluid">
+        <div class="row m-0">
+            {% for turno in turnos %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">                      
+                      <h4 class="card-title">{{turno.id}} {{turno.paciente}}</h4>
+                      <ul class = "list-group list-group-flush">
+                          <li class = "list-group-item"><a href="#">{{turno.dia}}</a></li>
+                          <li class = "list-group-item"><a href="#">{{turno.hora}}</a></li>
+                          <li class = "list-group-item"><a href="#">{{turno.motivo}}</a></li>
+                      </ul>
+                     <div class="card-body w-50 mx-auto">
+                      {% if perms.optometrialbye.change_turnos %}
+                          <a href="{% url 'editar_turno' turno.id %}" class="btn btn-success mx-4 ">Editar</a>                     
+                          <a href="{% url 'eliminar_turno' turno.id %}" class="btn btn-danger mx-2 ">Eliminar</a>
+                      {% endif %}
+                     </div>                        
+                    </div>                        
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+{% endblock  %}
+{% block footer %}
+<footer class="py-3 bg-primary fixed-bottom">
+    <div class="container">
+      <p class="m-0 text-light text-center">Derechos reservados 2020 (C)</p>
+    </div>
+</footer>
+{% endblock %}

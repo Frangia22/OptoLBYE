@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from optometrialbye.models import Pacientes, Turnos, Pedidos
-from optometrialbye.forms import PacienteForm, PedidoForm
+from optometrialbye.forms import PacienteForm, PedidoForm, TurnoForm
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -58,6 +58,9 @@ def DetallePedido (request):
     pedidos = Pedidos.objects.all()
     return render(request, "optolbye/detalle_pedido.html", {"pedidos" : pedidos})
 
+def DetalleTurno (request):
+    turnos = Turnos.objects.all()
+    return render(request, "optolbye/detalle_turno.html", {"turnos" : turnos})
 class NuevoPedido(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Pedidos
     template_name = 'optolbye/nuevo_pedido.html'
@@ -80,4 +83,18 @@ class PedidoUpdate(UpdateView):
 class PedidoDelete(DeleteView):
     model = Pedidos
     template_name = 'optolbye/eliminar_pedido.html'
+    success_url = reverse_lazy('index')
+class NuevoTurno(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Turnos
+    template_name = 'optolbye/nuevo_turno.html'
+    form_class = TurnoForm
+    success_url = reverse_lazy('index')
+class TurnoUpdate(UpdateView):
+    model = Turnos
+    template_name = 'optolbye/nuevo_turno.html'
+    form_class = TurnoForm
+    success_url = reverse_lazy('index')
+class TurnoDelete(DeleteView):
+    model = Turnos
+    template_name = 'optolbye/eliminar_turno.html'
     success_url = reverse_lazy('index')
