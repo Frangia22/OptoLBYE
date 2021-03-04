@@ -1,7 +1,7 @@
 from django.contrib import admin
 from optometrialbye.models import Pacientes, Turnos, Pedidos
 
-# Register your models here.
+# Register your models here.///Personalizo la vista de la tabla de la BD o que esta en el sitio de administración
 @admin.register(Pacientes)
 class PacientesAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'apellido', 'celular', 'historial', 'genero', 'id')

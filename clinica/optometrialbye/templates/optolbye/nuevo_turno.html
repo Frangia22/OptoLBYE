@@ -13,12 +13,9 @@
                     <h3>Nuevo turno</h3>
                     <hr>
                     <form action="" method="POST">
-                        {% csrf_token %}
-                
-                        {{ form | crispy }}
-                
-                        <input type="submit" value="Guardar" class="btn btn-primary mt-2 ">
-                        
+                        {% csrf_token %}                
+                        {{ form | crispy }}                
+                        <input type="submit" value="Guardar" class="btn btn-primary mt-2 ">                        
                     </form>
                 </div>
             </div>

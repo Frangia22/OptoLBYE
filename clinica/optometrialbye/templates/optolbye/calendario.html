@@ -1,0 +1,53 @@
+{% extends 'optolbye/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.css">
+{% endblock  %}
+
+{% block body %}
+<div class="container">
+    <div id="calendar" class="my-4"></div>
+    <h4 class="card-title">{{turno.id}} {{turno.paciente}}</h4>
+</div>
+{% endblock  %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      locale: 'es',
+      initialView: 'dayGridMonth',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      buttonText: {
+        today: 'Turnos',
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Dia',
+      },
+      events: [
+          {% for i in events %}
+            {
+                title: '{{ i.paciente }} {{ i.hora }}',
+                start: '{{ i.dia|date:"Y-m-d" }}',
+                end: '{{ i.hora|date:"H:i" }}'
+            },
+          {% endfor %}
+      ]
+    });
+    calendar.render();
+  });
+</script>
+{% endblock  %}
+{% block footer %}
+<footer class="py-3 bg-primary ">
+    <div class="container">
+      <p class="m-0 text-light text-center">Derechos reservados 2020 (C)</p>
+    </div>
+</footer>
+{% endblock %}

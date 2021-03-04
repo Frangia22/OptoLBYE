@@ -9,9 +9,33 @@
                 <div class="card-body">
                     <h3>Nuevo paciente</h3>
                     <hr>
-                    <form action="" method="POST">
+                    <form method="POST">
                         {% csrf_token %}
-                        {{ form | crispy }}
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                              {{ form.nombre | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                              {{ form.apellido | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                              {{ form.genero | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                              {{ form.celular | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                              {{ form.historial | as_crispy_field }}
+                            </div>
+                        </div>
                         <input type="submit" value="Guardar" class="btn btn-primary mt-2 ">
                     </form>
                 </div>

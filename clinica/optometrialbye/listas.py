@@ -1,3 +1,4 @@
+#Declaración de los distintos multiplesopciones
 genero_opciones = (
     ('F', 'Femenino'),
     ('M', 'Masculino')

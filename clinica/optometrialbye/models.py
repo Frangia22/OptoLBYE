@@ -14,7 +14,7 @@ class Pacientes(models.Model):
     celular_regex = RegexValidator(regex=r'^\+?549?\d{10}$', message = "Número debe ser ingresado en formato '+549XXXXXXXXXX'.")
     celular = models.CharField("Celular", validators=[celular_regex], max_length = 14, unique = True)
     historial = models.CharField( 'Historial', max_length=200, blank= True)
-    #Metadata
+    #Metadata lo ordeno por apellido
     class Meta:
         ordering = ['apellido']
 
@@ -24,7 +24,7 @@ class Pacientes(models.Model):
     def __str__(self):
         nombre_apellido = f'{self.nombre} {self.apellido}'
         return nombre_apellido
-
+##Clase turnos
 class Turnos(models.Model):
     #fecha = models.DateField()
     dia = models.DateField(default= date.today)
@@ -33,6 +33,7 @@ class Turnos(models.Model):
     paciente = models.ForeignKey(Pacientes, on_delete=models.CASCADE)
     motivo = models.CharField('Motivo', max_length=255, blank=True)
 
+##Defino que lo ordeno por el dia
     class Meta:
         ordering = ['dia']
 
@@ -44,13 +45,13 @@ class Turnos(models.Model):
 class Pedidos(models.Model):
     id_producto = models.AutoField(primary_key=True)
     producto = models.CharField(max_length=200)
-    descripcion = models.CharField(max_length=100, choices= descripcion_opciones, blank=False)
-    otra_descripcion = models.CharField(max_length= 50, choices= otra_descripcion)
+    descripcion = models.CharField(max_length=100, choices= descripcion_opciones, blank=False, default= 'Cerca')
+    otra_descripcion = models.CharField(max_length= 50, choices= otra_descripcion, default= 'Con armazon')
     precio = models.FloatField()
     subtotal = models.FloatField()
-    pago = models.CharField(max_length=100, choices= opciones_de_pago)
+    pago = models.CharField(max_length=100, choices= opciones_de_pago, default= 'Efectivo')
     paciente = models.ForeignKey(Pacientes, on_delete=models.CASCADE)
-    estado_pedido = models.CharField(max_length=60, choices= estado)
+    estado_pedido = models.CharField(max_length=60, choices= estado, default= 'Pendiente')
     
     class Meta:
         ordering = ['paciente']

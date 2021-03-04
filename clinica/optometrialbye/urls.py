@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+##Defino los nombres de las paginas 
+## ('url', nombredelavista.view, 'nombre_con_el_que_puedo_dirigirme_a_ella)
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -17,5 +20,6 @@ urlpatterns = [
     path('turno/nuevo', views.NuevoTurno.as_view(), name = 'nuevo_turno'),
     path('turno/detalle', views.DetalleTurno, name = 'detalle_turno'),
     path('turno/editar/<int:pk>', views.TurnoUpdate.as_view(), name = 'editar_turno'),
-    path('turno/eliminar/<int:pk>', views.TurnoDelete.as_view(), name = 'eliminar_turno')
+    path('turno/eliminar/<int:pk>', views.TurnoDelete.as_view(), name = 'eliminar_turno'),
+    path('calendario', views.CalendarioDetail, name = 'calendario'),
 ]
